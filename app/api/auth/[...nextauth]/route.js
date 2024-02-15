@@ -28,7 +28,6 @@ const handler = NextAuth({
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
-          console.log("Username " + profile.name.replace(" ", "").toLowerCase());
           await User.create({
             email: profile.email,
             username: profile.name.replace(" ", "").toLowerCase(),
@@ -38,7 +37,6 @@ const handler = NextAuth({
 
         return true
       } catch (error) {
-        console.log("Error checking if user exists: ", error.message);
         return false
       }
     },
